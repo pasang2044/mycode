@@ -52,7 +52,7 @@ def main():
     plt.savefig("/home/student/mycode/graphing/2018summaryv2.png")
     # Save to "~/static"
     plt.savefig("/home/student/static/2018summaryv2.png")       
-    print("Graph created.")
+    print("Graph Created")
 
 if __name__ == "__main__":
     main()
