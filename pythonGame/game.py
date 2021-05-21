@@ -12,6 +12,7 @@ DEFEAT PYTHON
 Commands:
   go [direction]
   get [item]
+
 ''')
 
 def showStatus():
@@ -140,9 +141,6 @@ while True:
   elif currentRoom == 'Study Room' and 'magic carpet'in inventory and 'beer' in inventory:
     print('You found Magic Carpet to fly you to the Garden.. YOU WIN!..Enjoy your Chilled Beer in the garden')
     break
-  elif currentRoom == 'Kitchen' and 'monster' in rooms[currentRoom] and 'cookie' in inventory:
-    print('Monster is more interested in your cookie..He ran with your cookie')
-    break
 
   elif currentRoom == 'Prayer Room':
     print('There are no way out. You are TRAPPED...You LOSE!')
@@ -150,10 +148,18 @@ while True:
 
   ## If a player enters a room with a monster
   elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
-    print('A monster has got you... GAME OVER!')
-    break
+    if 'cookie' in inventory:
+        print('Monster is more interested in your cookie..He ran with your cookie')
+        print(inventory)
+        
+        del rooms[currentRoom]['item']['monster']
+        inventory.remove('cookie')
+    else:
+        print('A monster has got you... GAME OVER!')
+        break
   
 
   elif 'item' in rooms[currentRoom] and 'grinder' in rooms[currentRoom]['item']:
     print('You got trapped in a room with human grinder. It chopped you into pieces... GAME OVER!')
     break
+
